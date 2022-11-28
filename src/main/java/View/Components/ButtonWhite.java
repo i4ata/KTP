@@ -29,8 +29,8 @@ public class ButtonWhite extends ButtonBase {
     public void disableButton() {
         setText("");
         setIcon(null);
-        hoverBackgroundColor = Color.BLACK;
-        pressedBackgroundColor = Color.BLACK;
+        hoverBackgroundColor = Color.DARK_GRAY;
+        pressedBackgroundColor = Color.DARK_GRAY;
         borderColor = Color.DARK_GRAY;
         init();
     }

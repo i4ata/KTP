@@ -22,7 +22,6 @@ public class MainView implements PropertyChangeListener {
 
     public MainView(Controller controller) {
         mainPanel.setBackground(Color.DARK_GRAY);
-        mainPanel.setBackground(Color.BLACK);
         for (Map.Entry<String, BaseView> viewPair : views.entrySet()) {
             String viewName = viewPair.getKey();
             BaseView view = viewPair.getValue();
