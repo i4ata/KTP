@@ -1,0 +1,12 @@
+MedicineName,Base,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13,Q14
+Herbitussin,Herbal,1,-1,1,1,1,1,1,-1,-1,1,-1,tablets,1..3,-1
+Bronchostop Duo,Herbal,-1,1,1,1,1,1,1,1,-1,1,-1,tablets,1..3,-1
+Goldie sept,Herbal,-1,1,1,1,1,1,1,1,-1,1,-1,spray,1..3,-1
+Propolis,Herbal,-1,1,1,1,1,1,1,1,-1,-1,-1,spray,1..3,-1
+Strepsils,Chemistry,1,-1,1,1,1,1,-1,-1,1,1,-1,tablets,4..8,-1
+Strepsils intensive,Chemistry,-1,1,1,1,-1,1,-1,-1,1,1,-1,spray,4..8,1
+Hexoraleten,Chemistry,-1,1,1,1,1,1,-1,-1,1,1,-1,tablets,4..8,-1
+Hexoral,Chemistry,-1,1,1,1,1,1,-1,-1,1,1,-1,spray,4..8,-1
+Efizol,Antibiotics,-1,-1,1,1,1,1,-1,-1,1,1,-1,tablets,9-10,-1
+Trahizan,Antibiotics,-1,-1,1,1,1,1,-1,-1,1,1,-1,tablets,9-10,-1
+Homeogene 9,Homeopathy,1,1,1,1,1,1,1,1,1,1,1,tablets,1-10,1
