@@ -19,11 +19,16 @@ public class ButtonWhite extends ButtonBase {
 
         setForeground(textColor);
         setBorder(defaultBorder);
+        setFont(new Font("tnr", Font.BOLD, 40));
     }
 
     private Border getCompoundBorder(Color color) {
         return BorderFactory.createCompoundBorder(outerBorder,
                 BorderFactory.createLineBorder(color, 20));
+    }
+
+    public void setFontSize(int size) {
+        this.setFont(new Font("tnr", Font.BOLD, size));
     }
 
     public void disableButton() {

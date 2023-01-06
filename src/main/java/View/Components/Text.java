@@ -8,5 +8,6 @@ public class Text extends JLabel {
         super(text);
         setBackground(Color.DARK_GRAY);
         setForeground(Color.WHITE);
+        setFont(new Font("tnr", Font.BOLD, size));
     }
 }

@@ -6,7 +6,8 @@ import View.Components.Text;
 import javax.swing.*;
 import java.awt.*;
 
-public class StartView extends BaseView{
+public class StartView extends BaseView
+{
     private final JComponent mainComponent;
     private final Text title = new Text("<html><span style='color:#f5e342'>KnowledgeSystem</span></html>", 80);
     private final Text description = new Text("", 15);
