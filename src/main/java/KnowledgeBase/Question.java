@@ -1,19 +1,21 @@
 package KnowledgeBase;
 
+import java.util.Map;
+
 public class Question {
     private String text;
-    private String[] possibleAnswers;
+    private Map<String, Question> map;
 
-    public Question(String text, String[] possibleAnswers) {
+    public Question(String text, Map<String, Question> map) {
         this.text = text;
-        this.possibleAnswers = possibleAnswers;
+        this.map = map;
     }
 
     public String getText() {
         return text;
     }
 
-    public String[] getPossibleAnswers() {
-        return possibleAnswers;
+    public Map<String, Question> getMap() {
+        return map;
     }
 }
