@@ -121,8 +121,8 @@ public class KB {
     private void notifyListeners() {
         System.out.println("Listeners notified!");
         listener.propertyChange(new PropertyChangeEvent(this, "text", null, root.getText()));
-        if(root.getMap() != null) {
-            listener.propertyChange(new PropertyChangeEvent(this, "answers", null, root.getMap().keySet()));
-        }
+//        if(root.getMap() != null) {
+//            listener.propertyChange(new PropertyChangeEvent(this, "answers", null, root.getMap().keySet()));
+//        }
     }
 }

@@ -1,27 +1,27 @@
 package Controller;
 
+import KnowledgeBase.KB;
 import KnowledgeBase.Question;
 import Model.KnowledgeSystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Controller implements ActionListener {
-    KnowledgeSystem model;
+    KB model;
 
-    public Controller(KnowledgeSystem model) {
+    public Controller(KB model) {
         this.model = model;
     }
 
+    //Choose a random child to move to upon pressing the button
     public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand().split(":")[0];
-
-        switch (command) {
-            case "interface" -> {
-                String qs = e.getActionCommand().split(":")[1];
-                model.changeToInterface(qs);
-            }
-            case "start" -> model.start();
-        }
+        List<String> keysAsArray = new ArrayList<>(model.getCurrentQuestion().getMap().keySet());
+        String choice = keysAsArray.get(new Random().nextInt(keysAsArray.size()));
+        System.out.println("You chose: " + choice + "\n");
+        model.makeChoice(choice);
     }
 }
