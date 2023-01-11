@@ -1,12 +1,16 @@
 package KnowledgeBase;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class KB {
 
-    private Question first = null;
+    private Question root = null;
+
+    PropertyChangeListener listener;
 
     List<String> medicineCollection = List.of("Herbitussin", "Bronchostop Duo", "Goldie sept", "Propolis", "Strepsils",
             "Strepsils intensive", "Hexoraleten", "Hexoral", "Efizol", "Trahizan", "Homeogene 9");
@@ -14,8 +18,12 @@ public class KB {
         init();
     }
 
-    public Question getFirst() {
-        return first;
+    public Question getCurrentQuestion() {
+        return root;
+    }
+
+    public void setListener(PropertyChangeListener listener) {
+        this.listener = listener;
     }
 
     private void init() {
@@ -33,7 +41,7 @@ public class KB {
         Question node11 = new Question("Do you have diabetes?", Map.of("No", node5, "Yes", node10));
         Question node12 = new Question("Do you have a cough?", Map.of("No", node11, "Yes", node10));
 
-        first = node12;
+        root = node12;
     }
 
     private Map<String, Question> getLeaves() {
@@ -42,5 +50,18 @@ public class KB {
             leaves.put(medicine, new Question(medicine, null));
         }
         return leaves;
+    }
+
+    public void makeChoice(String answer) {
+        root = root.getMap().get(answer);
+        notifyListeners();
+    }
+
+    private void notifyListeners() {
+        System.out.println("Listeners notified!");
+        listener.propertyChange(new PropertyChangeEvent(this, "text", null, root.getText()));
+        if(root.getMap() != null) {
+            listener.propertyChange(new PropertyChangeEvent(this, "answers", null, root.getMap().keySet()));
+        }
     }
 }
