@@ -19,9 +19,15 @@ public class Controller implements ActionListener {
 
     //Choose a random child to move to upon pressing the button
     public void actionPerformed(ActionEvent e) {
-        List<String> keysAsArray = new ArrayList<>(model.getCurrentQuestion().getMap().keySet());
-        String choice = keysAsArray.get(new Random().nextInt(keysAsArray.size()));
-        System.out.println("You chose: " + choice + "\n");
-        model.makeChoice(choice);
+        //List<String> keysAsArray = new ArrayList<>(model.getCurrentQuestion().getMap().keySet());
+        //String choice = keysAsArray.get(new Random().nextInt(keysAsArray.size()));
+        //System.out.println("You chose: " + choice + "\n");
+        //model.makeChoice(choice);
+        if(!e.getActionCommand().equals("Next")) {
+            System.out.println("Selected: " + e.getActionCommand());
+            model.makeChoice(e.getActionCommand());
+        } else {
+            model.notifyListeners();
+        }
     }
 }

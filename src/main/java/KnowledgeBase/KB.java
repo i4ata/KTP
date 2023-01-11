@@ -2,6 +2,7 @@ package KnowledgeBase;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -118,11 +119,9 @@ public class KB {
         notifyListeners();
     }
 
-    private void notifyListeners() {
+    public void notifyListeners() {
         System.out.println("Listeners notified!");
-        listener.propertyChange(new PropertyChangeEvent(this, "text", null, root.getText()));
-//        if(root.getMap() != null) {
-//            listener.propertyChange(new PropertyChangeEvent(this, "answers", null, root.getMap().keySet()));
-//        }
+        List<String> keys = root.getMap() == null ? null : new ArrayList<>(root.getMap().keySet());
+        listener.propertyChange(new PropertyChangeEvent(this, "question", keys, root.getText()));
     }
 }
