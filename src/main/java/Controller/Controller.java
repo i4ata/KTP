@@ -1,5 +1,6 @@
 package Controller;
 
+import KnowledgeBase.Question;
 import Model.KnowledgeSystem;
 
 import java.awt.event.ActionEvent;
@@ -16,7 +17,10 @@ public class Controller implements ActionListener {
         String command = e.getActionCommand().split(":")[0];
 
         switch (command) {
-            case "interface" -> model.changeToInterface();
+            case "interface" -> {
+                String qs = e.getActionCommand().split(":")[1];
+                model.changeToInterface(qs);
+            }
             case "start" -> model.start();
         }
     }

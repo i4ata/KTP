@@ -56,6 +56,7 @@ public class MainView implements PropertyChangeListener {
         hideAllViews();
         switch (evt.getPropertyName()) {
             case ("showInterface") -> {
+                views.get("interface").update(evt.getNewValue());
                 viewComponents.get("interface").setVisible(true);
             }
         }

@@ -1,5 +1,7 @@
 package Model;
 
+import KnowledgeBase.Question;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
@@ -17,8 +19,8 @@ public class KnowledgeSystem {
 
     }
 
-    public void changeToInterface() {
-        notifyListeners("showInterface", true);
+    public void changeToInterface(String qs) {
+        notifyListeners("showInterface", qs);
     }
 
     private void notifyListeners(String name, Object newValue){
@@ -34,6 +36,6 @@ public class KnowledgeSystem {
 
     public void start(){
         buildKnowledgeSystem();
-        changeToInterface();
+        changeToInterface("Choose main symptom");
     }
 }
