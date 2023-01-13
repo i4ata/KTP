@@ -9,6 +9,7 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
+import java.util.Set;
 
 public class MainView extends JFrame implements PropertyChangeListener {
 
@@ -24,7 +25,7 @@ public class MainView extends JFrame implements PropertyChangeListener {
         setTitle("KB");
         setSize(1200,800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        question = new JLabel("Welcome");
+        question = new JLabel("Welcome", SwingConstants.CENTER);
         add(question, BorderLayout.CENTER);
         setVisible(true);
     }
@@ -33,7 +34,18 @@ public class MainView extends JFrame implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         remove(buttonPanel);
 
-        Question currentQuestion = (Question) evt.getNewValue();
+        if (evt.getPropertyName().equals("question")) {
+            displayQuestions((Question) evt.getNewValue());
+        } else {
+            invalidate();
+            validate();
+            repaint();
+            question.setText(((Set<String>) evt.getNewValue()).toString());
+        }
+    }
+
+    private void displayQuestions(Question currentQuestion) {
+
         String text = currentQuestion.getQuestion();
         String op1 = currentQuestion.getOptions()[0];
         String op2 = currentQuestion.getOptions()[1];

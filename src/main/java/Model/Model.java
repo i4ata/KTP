@@ -134,6 +134,11 @@ public class Model {
     }
 
     public void notifyListeners() {
-        listener.propertyChange(new PropertyChangeEvent(this, "question", null, currentQuestion));
+        if (medicines.size() > 1 && !questions.isEmpty())
+        {
+            listener.propertyChange(new PropertyChangeEvent(this, "question", null, currentQuestion));
+        } else {
+            listener.propertyChange(new PropertyChangeEvent(this, "output", null, medicines));
+        }
     }
 }
