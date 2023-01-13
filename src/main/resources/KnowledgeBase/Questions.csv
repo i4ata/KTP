@@ -1,0 +1,22 @@
+1,"Main symptom? (1 = throat pain, -1 = cough)"
+2,Like homeopathy?
+3,Pregnant?
+4,Diabetic?
+5,Smoker?
+6,Would you rate your level of discomfort above 8?
+7,Would you rate your level of discomfort above 3?
+8,Associate pain with a cold?
+9,"Daily live involves dirty, dry, cold, conditioned air?"
+10,Daily live involves operating heavy machinery?
+11,Associate the pain with extensive use of vocal cords?
+12,Do you have a cough?
+13,Do you have a fever?
+14,"Is your cough wet or dry? (1 = wet, -1 = dry)"
+15,Have you had symptoms for more than 5 days?
+16,Do you have any chronic respiratory diseases?
+17,Do you have a sore throat?
+18,Do you have a chronic respiratory disease?
+19,Do you have a gastrointestinal disease?
+20,"What is your preferred form of medicine? (1 = tablets, -1 = syrup)"
+21,Are you allergic to thyme?
+22,Are you allergic to bees?
