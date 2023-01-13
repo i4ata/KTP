@@ -33,7 +33,6 @@ public class Model {
     public void AskQuestions(String choice) {
         System.out.println("\n\n\n");
         System.out.println("Questions amount:" + questions.size());
-        questions.forEach(Question::print);
         for(Question q : questions) {
             System.out.println(q.getIndex() + "    " + q.getQuestion() + "  "  + getScore(q));
         }
@@ -45,29 +44,27 @@ public class Model {
 
         System.out.println(choice);
 
-        Set<String> answer = choice.equals(currentQuestion.getOptions()[0]) ? currentQuestion.getYes() : currentQuestion.getNo();
+        Set<String> toRemove = choice.equals(currentQuestion.getOptions()[1]) ? currentQuestion.getYes() : currentQuestion.getNo();
 
         questions.remove(currentQuestion);
 
-        medicines.removeAll(answer);
+        medicines.removeAll(toRemove);
 
         for(Question q : questions) {
-            q.getNo().removeAll(answer);
-            q.getYes().removeAll(answer);
+            q.getNo().removeAll(toRemove);
+            q.getYes().removeAll(toRemove);
         }
 
         questions.removeIf(element -> getScore(element) == 0);
 
-        System.out.println("Removing:" + currentQuestion.getQuestion());
-        System.out.println("Removing:");
-        System.out.println(answer);
+        System.out.println("Removing: " + toRemove);
 
         currentQuestion = getBestQuestion();
 
         notifyListeners();
     }
 
-    public Question getBestQuestion() {
+    private Question getBestQuestion() {
         Question best = null;
         int best_score = 0;
 
