@@ -15,8 +15,7 @@
 15,Have you had symptoms for more than 5 days?
 16,Do you have any chronic respiratory diseases?
 17,Do you have a sore throat?
-18,Do you have a chronic respiratory disease?
-19,Do you have a gastrointestinal disease?
-20,"What is your preferred form of medicine? (1 = tablets, -1 = syrup)"
-21,Are you allergic to thyme?
-22,Are you allergic to bees?
+18,Do you have a gastrointestinal disease?
+19,What is your preferred form of medicine?
+20,Are you allergic to thyme?
+21,Are you allergic to bees?
