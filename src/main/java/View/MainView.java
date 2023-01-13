@@ -1,64 +1,77 @@
 package View;
 
 import Controller.Controller;
-import Model.KnowledgeSystem;
+import Model.Model;
+import Model.Question;
 
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class MainView implements PropertyChangeListener {
-    private final JPanel mainPanel = new JPanel();
+public class MainView extends JFrame implements PropertyChangeListener {
 
-    private final HashMap<String, BaseView> views = new HashMap<>() {{
-        put("start", new StartView());
-        put("interface", new InterfaceView());
-    }};
+    JLabel question;
+    JButton startButton;
+    JPanel buttonPanel = new JPanel();
 
-    private final HashMap<String, JComponent> viewComponents = new HashMap<>();
-
-    public MainView(Controller controller) {
-        mainPanel.setBackground(Color.DARK_GRAY);
-        for (Map.Entry<String, BaseView> viewPair : views.entrySet()) {
-            String viewName = viewPair.getKey();
-            BaseView view = viewPair.getValue();
-            JComponent viewComponent = view.getMainComponent();
-
-            view.setController(controller);
-            view.init();
-            viewComponents.put(viewName, viewComponent);
-            mainPanel.add(viewComponent);
-        }
-
-        hideAllViews();
-        viewComponents.get("start").setVisible(true);
+    public MainView() {
+        init();
     }
 
-    public JComponent getMainComponent() {
-        return mainPanel;
-    }
-
-    private void hideAllViews() {
-        for (JComponent comp: viewComponents.values()) {
-            comp.setVisible(false);
-        }
-    }
-
-    public void setup (KnowledgeSystem model){
-        model.addPropertyChangeListener(this);
+    private void init() {
+        setTitle("KB");
+        setSize(1200,800);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        question = new JLabel("Welcome");
+        add(question, BorderLayout.CENTER);
+        setVisible(true);
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        hideAllViews();
-        switch (evt.getPropertyName()) {
-            case ("showInterface") -> {
-                views.get("interface").update(evt.getNewValue());
-                viewComponents.get("interface").setVisible(true);
-            }
-        }
+        remove(buttonPanel);
+
+        Question currentQuestion = (Question) evt.getNewValue();
+        String text = currentQuestion.getQuestion();
+        String op1 = currentQuestion.getOptions()[0];
+        String op2 = currentQuestion.getOptions()[1];
+
+        System.out.println(text);
+        System.out.println(op1 + " " + op2);
+        buttonPanel = new JPanel();
+
+        JButton b1 = new JButton(op1);
+        b1.addActionListener(startButton.getActionListeners()[0]);
+        b1.setActionCommand(op1);
+
+        JButton b2 = new JButton(op2);
+        b2.addActionListener(startButton.getActionListeners()[0]);
+        b2.setActionCommand(op2);
+
+
+        buttonPanel.add(b1);
+        buttonPanel.add(b2);
+
+        add(buttonPanel, BorderLayout.SOUTH);
+        invalidate();
+        validate();
+        repaint();
+        question.setText(text);
+    }
+
+    public void setup(Model model) {
+        startButton = new JButton("Next");
+        startButton.addActionListener(new Controller(model));
+        startButton.setActionCommand("Next");
+        buttonPanel.add(startButton);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        model.setListener(this);
+
+        invalidate();
+        validate();
+        repaint();
     }
 }

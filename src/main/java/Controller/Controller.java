@@ -1,14 +1,10 @@
 package Controller;
 
-import KnowledgeBase.KB;
-import KnowledgeBase.Question;
-import Model.KnowledgeSystem;
+import Model.Model;
+import Model.Question;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class Controller implements ActionListener {
     KB model;
