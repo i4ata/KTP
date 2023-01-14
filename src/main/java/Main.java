@@ -1,9 +1,12 @@
-import Model.Model;
+import Model.KnowledgeSystem;
 import View.MainView;
 
-public class MainMain {
+/**
+ * Run the MVC.
+ */
+public class Main {
     public static void main(String[] args) {
-        Model model = new Model();
+        KnowledgeSystem model = new KnowledgeSystem();
         MainView view = new MainView();
         view.setup(model);
     }

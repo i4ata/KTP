@@ -1,28 +1,32 @@
 package View;
 
 import Controller.Controller;
-import Model.Model;
+import Model.KnowledgeSystem;
 import Model.Question;
 
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.List;
-import java.util.Set;
 
+/**
+ * The main view of the system.
+ */
 public class MainView extends JFrame implements PropertyChangeListener {
 
     JLabel question;
     JButton startButton;
     JPanel buttonPanel = new JPanel();
 
+    /**
+     * Initialize the view with a welcoming screen.
+     */
     public MainView() {
         init();
     }
 
     private void init() {
-        setTitle("KB");
+        setTitle("KnowledgeSystem");
         setSize(1200,800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         question = new JLabel("Welcome", SwingConstants.CENTER);
@@ -30,6 +34,13 @@ public class MainView extends JFrame implements PropertyChangeListener {
         setVisible(true);
     }
 
+    /**
+     * Update the view based on changes in the model.
+     * Display the next question and the possible options.
+     * If there are no more questions to be asked, display the conclusion of the knowledge system.
+     * @param evt A PropertyChangeEvent object describing the event source
+     *          and the property that has changed.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         remove(buttonPanel);
@@ -40,7 +51,7 @@ public class MainView extends JFrame implements PropertyChangeListener {
             invalidate();
             validate();
             repaint();
-            question.setText(((Set<String>) evt.getNewValue()).toString());
+            question.setText(evt.getNewValue().toString());
         }
     }
 
@@ -73,7 +84,12 @@ public class MainView extends JFrame implements PropertyChangeListener {
         question.setText(text);
     }
 
-    public void setup(Model model) {
+    /**
+     * Link the view and the model by passing the view as a listener of the model.
+     * Initialize the controller for the buttons in the view.
+     * @param model
+     */
+    public void setup(KnowledgeSystem model) {
         startButton = new JButton("Next");
         startButton.addActionListener(new Controller(model));
         startButton.setActionCommand("Next");

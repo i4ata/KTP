@@ -13,9 +13,9 @@ public class Question {
 
     public Question(int index) {
         this.qNumber = index;
-        this.text = FileReaderCSV.readQuestions().get(index);
-        this.options = FileReaderCSV.readOptions().get(index);
-        Map<String, Integer> values = FileReaderCSV.getColumn(index);
+        this.text = FileReaderCSV.getQuestionsCSV().get(index);
+        this.options = FileReaderCSV.getOptionsCSV().get(index);
+        Map<String, Integer> values = FileReaderCSV.getColumnCSV(index);
         System.out.println(values);
         for(String name : values.keySet())
         {
