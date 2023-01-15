@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class QuestionView extends BaseView{
     private final JComponent mainComponent;
-    private JLabel storeOverview;
+    private JLabel question;
     private JPanel grid;
 
     public QuestionView() {
@@ -18,7 +18,7 @@ public class QuestionView extends BaseView{
 
     @Override
     public void init() {
-        storeOverview = new Text("", 40);
+        question = new Text("", 40);
 
         grid = new JPanel();
         grid.setLayout(new GridLayout(1,2, 15, 15));
@@ -26,13 +26,13 @@ public class QuestionView extends BaseView{
         grid.setBackground(Color.DARK_GRAY);
 
         mainComponent.setLayout(new BoxLayout(mainComponent, BoxLayout.PAGE_AXIS));
-        storeOverview.setAlignmentX(Component.CENTER_ALIGNMENT);
+        question.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         mainComponent.setPreferredSize(new Dimension(750, 980));
         mainComponent.setBackground(Color.DARK_GRAY);
         mainComponent.setLayout(new BoxLayout(mainComponent, BoxLayout.PAGE_AXIS));
         mainComponent.add(Box.createRigidArea(new Dimension(0,100)));
-        mainComponent.add(storeOverview);
+        mainComponent.add(question);
         mainComponent.add(Box.createRigidArea(new Dimension(0,550)));
         mainComponent.add(grid);
     }
@@ -50,7 +50,7 @@ public class QuestionView extends BaseView{
 
     public void updateOptions(Question q) {
         String title = "<html>"+q.getQuestion()+"</html>";
-        storeOverview.setText(title);
+        question.setText(title);
 
         grid.removeAll();
         String[] options = q.getOptions();

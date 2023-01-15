@@ -19,7 +19,7 @@ public class ButtonWhite extends ButtonBase {
 
         setForeground(textColor);
         setBorder(defaultBorder);
-        setFont(new Font("ArcadeClassic", Font.BOLD, 40));
+        setFont(new Font("ArcadeClassic", Font.BOLD, 20));
     }
 
     private Border getCompoundBorder(Color color) {
