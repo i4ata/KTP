@@ -6,10 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Set;
 
-/**
- * @author Rengert van Dolderen
- * This view is visible after exiting the store. Your score is displayed with a corresponding message.
- */
 public class OutputView extends BaseView{
     private final JComponent mainComponent;
     private final Text exitText = new Text("Prescribed medicine:", 28);

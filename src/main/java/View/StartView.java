@@ -11,18 +11,10 @@ public class StartView extends BaseView{
     private final Text gameTitle = new Text("<html><span style='color:#f5e342'>Knowledge System</span></html>", 80);
     private final Text gameDescription = new Text("", 15);
 
-    /**
-     * @author Rengert van Dolderen
-     * This sets the mainComponent to the standard empty JPanel on initialization.
-     */
     public StartView() {
         this.mainComponent = this.getMainComponent();
     }
 
-    /**
-     * @author Rengert van Dolderen
-     * This puts all the visible components in the view.
-     */
     @Override
     public void init() {
         gameTitle.setAlignmentX(Component.CENTER_ALIGNMENT);

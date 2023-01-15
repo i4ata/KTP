@@ -12,18 +12,10 @@ public class QuestionView extends BaseView{
     private JLabel storeOverview;
     private JPanel grid;
 
-    /**
-     * @author Micky Labreche
-     * This sets the mainComponent to the standard empty JPanel on initialization.
-     */
     public QuestionView() {
         this.mainComponent = this.getMainComponent();
     }
 
-    /**
-     * @author Micky Labreche
-     * This puts all the visible components in the view.
-     */
     @Override
     public void init() {
         storeOverview = new Text("", 40);
