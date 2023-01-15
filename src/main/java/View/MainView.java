@@ -2,104 +2,70 @@ package View;
 
 import Controller.Controller;
 import Model.KnowledgeSystem;
-import Model.Question;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.*;
 
-/**
- * The main view of the system.
- */
-public class MainView extends JFrame implements PropertyChangeListener {
+public class MainView implements PropertyChangeListener{
+    private final JPanel mainPanel = new JPanel();
 
-    JLabel question;
-    JButton startButton;
-    JPanel buttonPanel = new JPanel();
+    private final HashMap<String, BaseView> views = new HashMap<>() {{
+        put("start", new StartView());
+        put("question", new QuestionView());
+        put("output", new OutputView());
+    }};
 
-    /**
-     * Initialize the view with a welcoming screen.
-     */
-    public MainView() {
-        init();
+    private final HashMap<String, JComponent> viewComponents = new HashMap<>();
+
+    public MainView(Controller controller) {
+        mainPanel.setBackground(Color.DARK_GRAY);
+        for (Map.Entry<String, BaseView> viewPair : views.entrySet()) {
+            String viewName = viewPair.getKey();
+            BaseView view = viewPair.getValue();
+            JComponent viewComponent = view.getMainComponent();
+
+            view.setController(controller);
+            view.init();
+            viewComponents.put(viewName, viewComponent);
+            mainPanel.add(viewComponent);
+        }
+
+        hideAllViews();
+        viewComponents.get("start").setVisible(true);
     }
 
-    private void init() {
-        setTitle("KnowledgeSystem");
-        setSize(1200,800);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        question = new JLabel("Welcome", SwingConstants.CENTER);
-        add(question, BorderLayout.CENTER);
-        setVisible(true);
+    public JComponent getMainComponent() {
+        return mainPanel;
     }
 
-    /**
-     * Update the view based on changes in the model.
-     * Display the next question and the possible options.
-     * If there are no more questions to be asked, display the conclusion of the knowledge system.
-     * @param evt A PropertyChangeEvent object describing the event source
-     *          and the property that has changed.
-     */
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        remove(buttonPanel);
-
-        if (evt.getPropertyName().equals("question")) {
-            displayQuestions((Question) evt.getNewValue());
-        } else {
-            invalidate();
-            validate();
-            repaint();
-            question.setText(evt.getNewValue().toString());
+    private void hideAllViews() {
+        for (JComponent comp: viewComponents.values()) {
+            comp.setVisible(false);
         }
     }
 
-    private void displayQuestions(Question currentQuestion) {
-
-        String text = currentQuestion.getQuestion();
-        String op1 = currentQuestion.getOptions()[0];
-        String op2 = currentQuestion.getOptions()[1];
-
-        System.out.println(text);
-        System.out.println(op1 + " " + op2);
-        buttonPanel = new JPanel();
-
-        JButton b1 = new JButton(op1);
-        b1.addActionListener(startButton.getActionListeners()[0]);
-        b1.setActionCommand(op1);
-
-        JButton b2 = new JButton(op2);
-        b2.addActionListener(startButton.getActionListeners()[0]);
-        b2.setActionCommand(op2);
-
-
-        buttonPanel.add(b1);
-        buttonPanel.add(b2);
-
-        add(buttonPanel, BorderLayout.SOUTH);
-        invalidate();
-        validate();
-        repaint();
-        question.setText(text);
+    public void setup (KnowledgeSystem model){
+        model.addPropertyChangeListener(this);
     }
 
-    /**
-     * Link the view and the model by passing the view as a listener of the model.
-     * Initialize the controller for the buttons in the view.
-     * @param model
-     */
-    public void setup(KnowledgeSystem model) {
-        startButton = new JButton("Next");
-        startButton.addActionListener(new Controller(model));
-        startButton.setActionCommand("Next");
-        buttonPanel.add(startButton);
-        add(buttonPanel, BorderLayout.SOUTH);
-
-        model.setListener(this);
-
-        invalidate();
-        validate();
-        repaint();
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        hideAllViews();
+        switch (evt.getPropertyName()) {
+            case ("showStartView") -> {
+                viewComponents.get("start").setVisible(true);
+            }
+            case("showQuestionView") -> {
+                views.get("question").update(evt.getNewValue());
+                viewComponents.get("question").setVisible(true);
+            }
+            case("showOutputView") -> {
+                views.get("output").update(evt.getNewValue());
+                viewComponents.get("output").setVisible(true);
+            }
+        }
     }
 }
