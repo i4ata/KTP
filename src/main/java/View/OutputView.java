@@ -23,7 +23,7 @@ public class OutputView extends BaseView{
 
         mainComponent.setLayout(new BoxLayout(mainComponent, BoxLayout.PAGE_AXIS));
         mainComponent.setBackground(Color.DARK_GRAY);
-        mainComponent.add(Box.createRigidArea(new Dimension(0,100)));
+        mainComponent.add(Box.createRigidArea(new Dimension(0,250)));
         mainComponent.add(Box.createVerticalGlue());
         mainComponent.add(exitText);
         mainComponent.add(Box.createRigidArea(new Dimension(0,200)));
