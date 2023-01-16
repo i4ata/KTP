@@ -19,6 +19,8 @@ public class QuestionView extends BaseView{
     @Override
     public void init() {
         question = new Text("", 40);
+        question.setAlignmentX(Component.CENTER_ALIGNMENT);
+        question.setHorizontalAlignment(0);
 
         grid = new JPanel();
         grid.setLayout(new GridLayout(1,2, 15, 15));
@@ -26,14 +28,13 @@ public class QuestionView extends BaseView{
         grid.setBackground(Color.DARK_GRAY);
 
         mainComponent.setLayout(new BoxLayout(mainComponent, BoxLayout.PAGE_AXIS));
-        question.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        mainComponent.setPreferredSize(new Dimension(750, 980));
+        mainComponent.setPreferredSize(new Dimension(750, 680));
         mainComponent.setBackground(Color.DARK_GRAY);
         mainComponent.setLayout(new BoxLayout(mainComponent, BoxLayout.PAGE_AXIS));
-        mainComponent.add(Box.createRigidArea(new Dimension(0,100)));
+        mainComponent.add(Box.createRigidArea(new Dimension(0,350)));
         mainComponent.add(question);
-        mainComponent.add(Box.createRigidArea(new Dimension(0,550)));
+        mainComponent.add(Box.createRigidArea(new Dimension(0,150)));
         mainComponent.add(grid);
     }
 
@@ -54,10 +55,10 @@ public class QuestionView extends BaseView{
 
         grid.removeAll();
         String[] options = q.getOptions();
-        for (int i = 0; i < options.length; i++) {
-            String option = "<html>" + options[i] + "</html>";
+        for (String s : options) {
+            String option = "<html>" + s + "</html>";
             ButtonWhite optionButton = new ButtonWhite(option);
-            optionButton.setActionCommand("question:"+options[i]);
+            optionButton.setActionCommand("question:" + s);
             optionButton.addActionListener(controller);
             grid.add(optionButton);
         }
