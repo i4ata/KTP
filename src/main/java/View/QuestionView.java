@@ -25,12 +25,12 @@ public class QuestionView extends BaseView{
         grid = new JPanel();
         grid.setLayout(new GridLayout(1,2, 15, 15));
         grid.setPreferredSize(new Dimension(870, 250));
-        grid.setBackground(Color.DARK_GRAY);
+        grid.setBackground(Color.decode("#20A0D8"));
 
         mainComponent.setLayout(new BoxLayout(mainComponent, BoxLayout.PAGE_AXIS));
 
         mainComponent.setPreferredSize(new Dimension(750, 680));
-        mainComponent.setBackground(Color.DARK_GRAY);
+        mainComponent.setBackground(Color.decode("#20A0D8"));
         mainComponent.setLayout(new BoxLayout(mainComponent, BoxLayout.PAGE_AXIS));
         mainComponent.add(Box.createRigidArea(new Dimension(0,350)));
         mainComponent.add(question);

@@ -6,10 +6,10 @@ import java.awt.*;
 
 public abstract class ButtonBase extends JButton {
     public Color borderColor = Color.WHITE;
-    public Color defaultBackgroundColor = Color.DARK_GRAY;
-    public Color hoverBackgroundColor = Color.BLACK;
+    public Color defaultBackgroundColor = Color.decode("#80D0F4");
+    public Color hoverBackgroundColor = Color.WHITE;
     public Color pressedBackgroundColor = Color.LIGHT_GRAY;
-    public final Color textColor = Color.WHITE;
+    public final Color textColor = Color.BLACK;
 
     public Border outerBorder;
     public Border defaultBorder;

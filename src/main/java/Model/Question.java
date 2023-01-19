@@ -16,7 +16,7 @@ public class Question {
         this.text = FileReaderCSV.getQuestionsCSV().get(index);
         this.options = FileReaderCSV.getOptionsCSV().get(index);
         Map<String, Integer> values = FileReaderCSV.getColumnCSV(index);
-        System.out.println(values);
+//        System.out.println(values);
         for(String name : values.keySet())
         {
             if (values.get(name) == 1)

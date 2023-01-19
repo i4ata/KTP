@@ -22,7 +22,7 @@ public class OutputView extends BaseView{
         medicineText.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         mainComponent.setLayout(new BoxLayout(mainComponent, BoxLayout.PAGE_AXIS));
-        mainComponent.setBackground(Color.DARK_GRAY);
+        mainComponent.setBackground(Color.decode("#20A0D8"));
         mainComponent.add(Box.createRigidArea(new Dimension(0,250)));
         mainComponent.add(Box.createVerticalGlue());
         mainComponent.add(exitText);

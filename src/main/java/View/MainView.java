@@ -21,7 +21,7 @@ public class MainView implements PropertyChangeListener{
     private final HashMap<String, JComponent> viewComponents = new HashMap<>();
 
     public MainView(Controller controller) {
-        mainPanel.setBackground(Color.DARK_GRAY);
+        mainPanel.setBackground(Color.decode("#20A0D8"));
         for (Map.Entry<String, BaseView> viewPair : views.entrySet()) {
             String viewName = viewPair.getKey();
             BaseView view = viewPair.getValue();
