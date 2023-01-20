@@ -11,10 +11,16 @@ public class OutputView extends BaseView{
     private final Text exitText = new Text("Prescribed medicine:", 28);
     private final Text medicineText = new Text("0", 100);
 
+    /**
+     * This sets the mainComponent to the standard empty JPanel on initialization.
+     */
     public OutputView() {
         this.mainComponent = this.getMainComponent();
     }
 
+    /**
+     * This puts all the visible components in the view.
+     */
     @Override
     public void init() {
         exitText.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -31,11 +37,19 @@ public class OutputView extends BaseView{
         mainComponent.add(medicineText);
     }
 
+    /**
+     * This takes an object and updates the correct part of the view based on the object type.
+     * @param object The input object that contains the update information.
+     */
     @Override
     public void update (Object object) {
         updateOutput((Set<String>) object);
     }
 
+    /**
+     * Updates the medicineText string with the corresponding medicine based on the asked questions.
+     * @param medicines
+     */
     public void updateOutput(Set<String> medicines) {
         medicineText.setText(medicines.toString().replace("[", "").replace("]",""));
     }

@@ -12,10 +12,16 @@ public class QuestionView extends BaseView{
     private JLabel question;
     private JPanel grid;
 
+    /**
+     * This sets the mainComponent to the standard empty JPanel on initialization.
+     */
     public QuestionView() {
         this.mainComponent = this.getMainComponent();
     }
 
+    /**
+     * This puts all the visible components in the view.
+     */
     @Override
     public void init() {
         question = new Text("", 40);
@@ -39,7 +45,6 @@ public class QuestionView extends BaseView{
     }
 
     /**
-     * @author Micky Labreche
      * This takes an object and updates the correct part of the view based on the object type.
      * @param object The input object that contains the update information.
      */
@@ -48,7 +53,10 @@ public class QuestionView extends BaseView{
         updateOptions((Question) object);
     }
 
-
+    /**
+     * This fills the buttons with the option strings corresponding to the current question.
+     * @param q
+     */
     public void updateOptions(Question q) {
         String title = "<html>"+q.getQuestion()+"</html>";
         question.setText(title);

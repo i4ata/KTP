@@ -11,10 +11,16 @@ public class StartView extends BaseView{
     private final Text gameTitle = new Text("<html><span style='color:#f5e342'>Medicine Prescription<br>Knowledge System</span></html>", 80);
     private final Text gameDescription = new Text("", 15);
 
+    /**
+     * This sets the mainComponent to the standard empty JPanel on initialization.
+     */
     public StartView() {
         this.mainComponent = this.getMainComponent();
     }
 
+    /**
+     * This puts all the visible components in the view.
+     */
     @Override
     public void init() {
         gameTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -47,6 +53,10 @@ public class StartView extends BaseView{
         mainComponent.add(grid);
     }
 
+    /**
+     * This takes an object and updates the correct part of the view based on the object type.
+     * @param object The input object that contains the update information.
+     */
     @Override
     public void update(Object object) {}
 }
