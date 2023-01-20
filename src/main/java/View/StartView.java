@@ -6,9 +6,12 @@ import View.Components.Text;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class defines the starting, welcoming view.
+ */
 public class StartView extends BaseView{
     private final JComponent mainComponent;
-    private final Text gameTitle = new Text("<html><span style='color:#f5e342'>Medicine Prescription<br>Knowledge System</span></html>", 80);
+    private final Text gameTitle = new Text("<html><span style='color:#f5e342'>Medicine Recommendation<br>Knowledge System</span></html>", 80);
     private final Text gameDescription = new Text("", 15);
 
     /**
@@ -26,9 +29,8 @@ public class StartView extends BaseView{
         gameTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         String intro = "<html>A. Angelov, I. Rusinov, R.J. van Dolderen <br><br>" +
-                "This knowledge system is a decision-making tool to help pharmacy<br>" +
-                "staff make more informed and accurate decisions when prescribing<br>" +
-                "medicine.</html>";
+                "This knowledge system is a decision-making tool for recommending medicine<br>" +
+                "after a few short questions are answered.</html>";
 
         gameDescription.setText(intro);
         gameDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -54,7 +56,7 @@ public class StartView extends BaseView{
     }
 
     /**
-     * This takes an object and updates the correct part of the view based on the object type.
+     * This method takes an object and updates the correct part of the view based on the object type.
      * @param object The input object that contains the update information.
      */
     @Override

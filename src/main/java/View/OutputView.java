@@ -6,13 +6,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Set;
 
+/**
+ * This class defines the output view, which is displayed when the system has made a decision.
+ */
 public class OutputView extends BaseView{
     private final JComponent mainComponent;
-    private final Text exitText = new Text("Prescribed medicine:", 28);
+    private final Text exitText = new Text("Recommended medicine:", 28);
     private final Text medicineText = new Text("0", 100);
 
     /**
-     * This sets the mainComponent to the standard empty JPanel on initialization.
+     * This method sets the mainComponent to the standard empty JPanel on initialization.
      */
     public OutputView() {
         this.mainComponent = this.getMainComponent();
@@ -48,7 +51,7 @@ public class OutputView extends BaseView{
 
     /**
      * Updates the medicineText string with the corresponding medicine based on the asked questions.
-     * @param medicines
+     * @param medicines that is/are displayed.
      */
     public void updateOutput(Set<String> medicines) {
         medicineText.setText(medicines.toString().replace("[", "").replace("]",""));

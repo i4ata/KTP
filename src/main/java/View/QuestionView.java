@@ -7,20 +7,23 @@ import View.Components.Text;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class defines the view that is displayed when the questions are being asked.
+ */
 public class QuestionView extends BaseView{
     private final JComponent mainComponent;
     private JLabel question;
     private JPanel grid;
 
     /**
-     * This sets the mainComponent to the standard empty JPanel on initialization.
+     * The constructor sets the mainComponent to the standard empty JPanel on initialization.
      */
     public QuestionView() {
         this.mainComponent = this.getMainComponent();
     }
 
     /**
-     * This puts all the visible components in the view.
+     * This method puts all the visible components in the view.
      */
     @Override
     public void init() {
@@ -45,7 +48,7 @@ public class QuestionView extends BaseView{
     }
 
     /**
-     * This takes an object and updates the correct part of the view based on the object type.
+     * This method takes an object and updates the correct part of the view based on the object type.
      * @param object The input object that contains the update information.
      */
     @Override
@@ -54,8 +57,8 @@ public class QuestionView extends BaseView{
     }
 
     /**
-     * This fills the buttons with the option strings corresponding to the current question.
-     * @param q
+     * This method fills the buttons with the option strings corresponding to the current question.
+     * @param q question whose options are displayed
      */
     public void updateOptions(Question q) {
         String title = "<html>"+q.getQuestion()+"</html>";

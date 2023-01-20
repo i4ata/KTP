@@ -5,22 +5,22 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 /**
- * This defines the base for the custom buttons in the game.
+ * This class defines the base for the custom buttons in the view.
  */
 public abstract class ButtonBase extends JButton {
-    public Color borderColor = Color.WHITE;
-    public Color defaultBackgroundColor = Color.decode("#80D0F4");
-    public Color hoverBackgroundColor = Color.WHITE;
-    public Color pressedBackgroundColor = Color.LIGHT_GRAY;
-    public final Color textColor = Color.BLACK;
+    protected Color borderColor = Color.WHITE;
+    protected Color defaultBackgroundColor = Color.decode("#80D0F4");
+    protected Color hoverBackgroundColor = Color.WHITE;
+    protected Color pressedBackgroundColor = Color.LIGHT_GRAY;
+    protected final Color textColor = Color.BLACK;
 
-    public Border outerBorder;
-    public Border defaultBorder;
-    public Border hoverBorder;
-    public Border pressedBorder;
+    protected Border outerBorder;
+    protected Border defaultBorder;
+    protected Border hoverBorder;
+    protected Border pressedBorder;
 
-    public final Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-    public final Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
+    protected final Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+    protected final Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
 
     /**
      * The constructor for the button which passes the displayed text to the superclass and disables some settings
@@ -33,17 +33,8 @@ public abstract class ButtonBase extends JButton {
         setFocusPainted(false);
     }
 
-    /**
-     * Defines the abstract method init
-     */
-    public abstract void init();
+    protected abstract void init();
 
-    /**
-     * Overrides the standard paint method that is used to display the component.
-     * It defines which colors should be displayed when hovering over or clicking on a button.
-     * It also changes the pointer icon.
-     * @param g the <code>Graphics</code> object to protect
-     */
     @Override
     protected void paintComponent(Graphics g) {
         if (getModel().isPressed()) {

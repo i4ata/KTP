@@ -11,7 +11,8 @@ public class ButtonWhite extends ButtonBase {
         init();
     }
 
-    public void init() {
+    @Override
+    protected void init() {
         outerBorder = new LineBorder(borderColor, 5, true);
         defaultBorder = getCompoundBorder(defaultBackgroundColor);
         hoverBorder = getCompoundBorder(hoverBackgroundColor);

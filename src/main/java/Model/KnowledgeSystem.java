@@ -53,10 +53,6 @@ public class KnowledgeSystem {
         }
     }
 
-    /**
-     * This function returns the Question object with the highest score received from the getScore function.
-     * @return best
-     */
     private Question getBestQuestion() {
         Question best = null;
         int best_score = 0;
@@ -73,12 +69,6 @@ public class KnowledgeSystem {
         return best;
     }
 
-    /**
-     * getScore receives a Question object and computes a score based on the set of medicine under each outcome
-     * compared to the current superset (medicines).
-     * @param q
-     * @return score
-     */
     private int getScore(Question q) {
         Set<String> intersectionYes = new HashSet<>(medicines);
         intersectionYes.retainAll(q.getYes());
@@ -109,11 +99,6 @@ public class KnowledgeSystem {
         notifyListeners("showOutputView", medicines);
     }
 
-    /**
-     * changes a property in the view
-     * @param name name of the to be changed property
-     * @param newValue new value of the property to be changed
-     */
     private void notifyListeners(String name, Object newValue){
         PropertyChangeEvent payload = new PropertyChangeEvent(this, name, null, newValue);
         for (PropertyChangeListener listener : listeners){

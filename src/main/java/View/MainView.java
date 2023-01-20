@@ -52,9 +52,6 @@ public class MainView implements PropertyChangeListener{
         return mainPanel;
     }
 
-    /**
-     * Hides all the views that are added to the viewComponents Hashmap
-     */
     private void hideAllViews() {
         for (JComponent comp: viewComponents.values()) {
             comp.setVisible(false);

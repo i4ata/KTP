@@ -17,7 +17,7 @@ public class Question {
     /**
      * The constructor. It extracts the options and question text from the csv files and fills the subsets based on
      * Medicine.csv
-     * @param index
+     * @param index of the question in the .csv file.
      */
     public Question(int index) {
         this.text = FileReaderCSV.getQuestionsCSV().get(index);
@@ -42,9 +42,11 @@ public class Question {
     {
         return text;
     }
+
     /**
      * @return The subset of medicine under the first option
      */
+
     public Set<String> getYes()
     {
         return yes;
@@ -52,6 +54,7 @@ public class Question {
     /**
      * @return The subset of medicine under the second option
      */
+
     public Set<String> getNo()
     {
         return no;
@@ -59,5 +62,6 @@ public class Question {
     /**
      * @return The option Strings
      */
+
     public String[] getOptions() { return options; }
 }

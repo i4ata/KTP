@@ -9,7 +9,7 @@ import javax.swing.*;
  */
 public abstract class BaseView {
     private final JPanel mainComponent = new JPanel();
-    public Controller controller = null;
+    protected Controller controller = null;
 
     public JComponent getMainComponent() {
         return mainComponent;
