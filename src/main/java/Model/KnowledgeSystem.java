@@ -11,35 +11,15 @@ import java.util.Set;
  * Class that provides functionality for a working knowledge system.
  */
 public class KnowledgeSystem {
-    private Set<String> medicines = FileReaderCSV.getMedicinesCSV().keySet();
-    private Set<Question> questions = extractQuestions();
+    private final Set<String> medicines = FileReaderCSV.getMedicinesCSV().keySet();
+    private final Set<Question> questions = extractQuestions();
     private Question currentQuestion = new Question(1);
     transient Collection<PropertyChangeListener> listeners = new ArrayList<>();
 
     /**
-     * Add a listener to the model. We set this listener to be the main view.
-     * @param listener that updates the view upon changes in the model.
+     * This function creates all Question objects with the information from the csv file.
+     * @return questions
      */
-//    public void setListener(PropertyChangeListener listener) {
-//        this.listener = listener;
-//    }
-
-    /**
-     * Get a set of the current available medicine names.
-     * @return the medicine names.
-     */
-    public Set<String> getMedicines() {
-        return medicines;
-    }
-
-    /**
-     * Get the set of the current available questions
-     * @return the questions
-     */
-    public Set<Question> getQuestions() {
-        return questions;
-    }
-
     private Set<Question> extractQuestions() {
         Set<Question> questions = new HashSet<>();
         for(int idx = 1; idx <= FileReaderCSV.getQuestionsCSV().size(); ++idx) {
@@ -73,6 +53,10 @@ public class KnowledgeSystem {
         }
     }
 
+    /**
+     * This function returns the Question object with the highest score received from the getScore function.
+     * @return best
+     */
     private Question getBestQuestion() {
         Question best = null;
         int best_score = 0;
@@ -89,6 +73,12 @@ public class KnowledgeSystem {
         return best;
     }
 
+    /**
+     * getScore receives a Question object and computes a score based on the set of medicine under each outcome
+     * compared to the current superset (medicines).
+     * @param q
+     * @return score
+     */
     private int getScore(Question q) {
         Set<String> intersectionYes = new HashSet<>(medicines);
         intersectionYes.retainAll(q.getYes());
@@ -105,22 +95,25 @@ public class KnowledgeSystem {
         return score;
     }
 
+    /**
+     * Method used to change the view to the questions view.
+     */
     public void changeToQuestions() {
         notifyListeners("showQuestionView", currentQuestion);
     }
 
+    /**
+     * Method used to change the view to the output view.
+     */
     public void changeToOutput() {
         notifyListeners("showOutputView", medicines);
     }
 
-    public void addPropertyChangeListener(PropertyChangeListener listener){
-        listeners.add(listener);
-    }
-
     /**
-     * Notify the listener about changes in the model.
+     * changes a property in the view
+     * @param name name of the to be changed property
+     * @param newValue new value of the property to be changed
      */
-
     private void notifyListeners(String name, Object newValue){
         PropertyChangeEvent payload = new PropertyChangeEvent(this, name, null, newValue);
         for (PropertyChangeListener listener : listeners){
@@ -128,6 +121,18 @@ public class KnowledgeSystem {
         }
     }
 
+    /**
+     * adds a PropertyChangeListener (the model) to the list of listeners
+     * @param listener new PropertyChangeListener
+     */
+    public void addPropertyChangeListener(PropertyChangeListener listener){
+        listeners.add(listener);
+    }
+
+    /**
+     * This method initializes the model process. It sets the currentQuestion to the first question in the csv
+     * and changes the view to the questions view.
+     */
     public void start() {
         currentQuestion = new Question(1);
         changeToQuestions();

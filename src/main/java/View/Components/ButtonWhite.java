@@ -26,18 +26,4 @@ public class ButtonWhite extends ButtonBase {
         return BorderFactory.createCompoundBorder(outerBorder,
                 BorderFactory.createLineBorder(color, 20));
     }
-
-    public void setFontSize(int size) {
-        this.setFont(new Font("ArcadeClassic", Font.BOLD, size));
-    }
-
-    public void disableButton() {
-        setText("");
-        setIcon(null);
-        hoverBackgroundColor = Color.BLACK;
-        pressedBackgroundColor = Color.BLACK;
-        borderColor = Color.BLACK;
-        init();
-    }
-
 }

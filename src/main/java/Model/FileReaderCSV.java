@@ -13,6 +13,10 @@ public class FileReaderCSV {
     private static final Map<String, Map<Integer, Integer>> medicines = readMedicineCollection();
     private static final Map<Integer, String[]> options = readOptions();
 
+    /**
+     * Reads all the questions which can be asked from Questions.csv and puts it into a map.
+     * @return questions
+     */
     private static Map<Integer, String> readQuestions() {
         Map<Integer, String> questions = new HashMap<>();
         try (Scanner fileInput = new Scanner(
@@ -26,6 +30,10 @@ public class FileReaderCSV {
         return questions;
     }
 
+    /**
+     * Reads all medicine from Medicine.csv and puts it into a map.
+     * @return medicines
+     */
     private static Map<String, Map<Integer, Integer>> readMedicineCollection() {
         Map<String, Map<Integer, Integer>> medicines = new HashMap<>();
         try (Scanner fileInput = new Scanner(
@@ -43,6 +51,10 @@ public class FileReaderCSV {
         return medicines;
     }
 
+    /**
+     * Reads the possible responses to the questions from Options.csv and puts it into a map.
+     * @return options
+     */
     private static Map<Integer, String[]> readOptions() {
         Map<Integer, String[]> options = new HashMap<>();
         try (Scanner fileInput = new Scanner(

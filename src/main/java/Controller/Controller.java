@@ -25,15 +25,12 @@ public class Controller implements ActionListener {
      * The model is updated upon an action is taken.
      * @param e the event to be processed
      */
-
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand().split(":")[0];
 
         switch (command) {
             case "next" -> model.start();
-            case "question" -> {
-                model.askQuestions(e.getActionCommand().split(":")[1]);
-            }
+            case "question" -> model.askQuestions(e.getActionCommand().split(":")[1]);
         }
     }
 }
